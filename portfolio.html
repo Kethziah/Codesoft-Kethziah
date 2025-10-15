@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kethzi Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Times new roman", Arial, sans-serif;
+      background: #f4f6f9;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3 {
+      color: #fffbfb;
+    }
+
+    img {
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+    header {
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
+    nav {
+      background: #060606;
+      padding: 0.8rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin: 0 18px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: #fff;
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+    section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 3rem 2rem;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      color: #2b5876;
+    }
+    #about-me {
+      text-align: center;
+    }
+
+    #about-me img {
+      width: 220px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    #about-me p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.1rem;
+      color: #555;
+    }
+    #my-toolbox ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      gap: 10px;
+      padding: 0;
+    }
+
+    #my-toolbox li {
+      background: #2b5876;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    #my-toolbox li:hover {
+      background: #4e4376;
+    }
+    .project-card {
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+
+    .project-card h3 {
+      color: #2b5876;
+      margin-bottom: 0.5rem;
+    }
+    .resume {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .resume p {
+      max-width: 800px;
+      margin: auto;
+      color: #555;
+    }
+
+    .resume a {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 10px 25px;
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+
+    .resume a:hover {
+      transform: scale(1.05);
+    }
+    #contact {
+      text-align: center;
+    }
+
+    #contact p {
+      font-size: 1.1rem;
+      margin: 8px 0;
+    }
+
+    #contact a {
+      color: #2b5876;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    #contact a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      background: #1f1f1f;
+      color: #fff;
+      text-align: center;
+      padding: 1.2rem;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      nav ul li {
+        margin: 0 10px;
+      }
+      #about-me img {
+        width: 180px;
+      }
+      section {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Kethzi</h1>
+    <p>Web Developer • Designer • Tech Explorer</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about-me">About Me</a></li>
+      <li><a href="#my-toolbox">My ToolBox</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="about-me">
+    <h2>About Me</h2>
+    <img src="kethzi.jpg" alt="Portrait of Kethzi, web developer">
+    <p>Hello! I'm <strong>Kethzi</strong>, a creative web developer who loves designing sleek, responsive websites that bring ideas to life. With a strong focus on user experience, I build visually appealing and functional interfaces using HTML, CSS, and JavaScript. When I’m not coding, I enjoy experimenting with new design trends and tools to keep my creativity flowing.</p>
+  </section>
+
+  <section id="my-toolbox">
+    <h2>My ToolBox</h2>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>MySQL</li>
+      <li>Responsive Design</li>
+      <li>UI/UX Basics</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-card">
+      <h3>Personal Portfolio Website</h3>
+      <p>A modern, responsive website created to represent my work and journey as a developer. I built it using HTML, CSS, and JavaScript with a focus on simplicity, clarity, and smooth user experience.</p>
+    </div>
+    <div class="project-card">
+      <h3>Weather Forecast Application</h3>
+      <p>An interactive web app that brings real-time weather updates to your screen using the OpenWeather API. It features a clean, easy-to-use interface with dynamic visuals that change based on the weather, making forecasts both informative and engaging.</p>
+    </div>
+    <div class="project-card">
+      <h3>Smart Todo Manager</h3>
+      <p>A simple yet elegant task manager designed to help users stay organized and focused. It allows tasks to be saved locally, so your to-do list is always right where you left it — efficient, fast, and distraction-free.</p>
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+    <div class="resume">
+      <p>I’m a web developer who loves turning ideas into meaningful digital experiences. I enjoy building websites that not only look great but feel intuitive to use. My journey in front-end development has taught me the importance of clean design, efficient code, and user-centered thinking. I aspire to grow into a full-stack developer and contribute to projects that make technology more accessible and impactful.</p>
+      <a href="Kethzi_Resume.pdf" download>Download Resume</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>For More Details</h2>
+    <p>Email: <a href="mailto:kethziprisci@gmail.com">kethziprisci@gmail.com</a></p>
+    <p>Phone: <a href="tel:+917397053654">+91 7397053654</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 | Crafted by Kethzi
+  </footer>
+
+</body>
+</html>
