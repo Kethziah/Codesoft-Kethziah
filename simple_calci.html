@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scientific Calculator</title>
+<style>
+body{display:flex;justify-content:center;align-items:center;height:100vh;margin:0;background:#2c3e50;font-family:sans-serif}
+.calculator{width:330px;padding:20px;border-radius:10px;background:#1e2b38}
+.screen{margin-bottom:10px;padding:10px;background:#131a21;border-radius:5px;text-align:right;color:#ecf0f1;font-size:2em}
+.buttons{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+button{padding:12px;border:none;border-radius:6px;cursor:pointer;font-size:1em;color:#fff}
+.number{background:#2c3e50}.number:hover{background:#3b5065}
+.operator{background:#e67e22}.operator:hover{background:#f39c12}
+.scientific{background:#34495e}.scientific:hover{background:#4a6581}
+.clear{background:#c0392b}.clear:hover{background:#e74c3c}
+.span-two{grid-column:span 2}
+</style>
+</head>
+<body>
+<div class="calculator">
+  <div id="screen" class="screen">0</div>
+  <div class="buttons">
+    <button class="scientific" data-op="sin">sin</button>
+    <button class="scientific" data-op="cos">cos</button>
+    <button class="scientific" data-op="tan">tan</button>
+    <button class="clear" id="ac">AC</button>
+    <button class="clear" id="del">DEL</button>
+
+    <button class="scientific" data-op="sqrt">√</button>
+    <button class="scientific" data-op="pow">x²</button>
+    <button class="scientific" data-op="pi">π</button>
+    <button class="operator" data-op="/">÷</button>
+    <button class="operator" data-op="*">×</button>
+
+    <button class="number">7</button><button class="number">8</button><button class="number">9</button>
+    <button class="operator" data-op="-">-</button><button class="operator" data-op="+">+</button>
+
+    <button class="number">4</button><button class="number">5</button><button class="number">6</button>
+    <button class="number">1</button><button class="number">2</button><button class="number">3</button>
+
+    <button class="number span-two">0</button><button class="number">.</button>
+    <button class="operator span-two" id="eq">=</button>
+  </div>
+</div>
+
+<script>
+const screen=document.getElementById('screen');
+let curr='0',prev='',op;
+function show(){screen.innerText=curr;}
+function clear(){curr='0';prev='';op='';show();}
+function del(){curr=curr.slice(0,-1)||'0';show();}
+function append(n){if(n==='.'&&curr.includes('.'))return;curr=(curr==='0'&&n!=='.')?n:curr+n;show();}
+function calc(){
+  let a=parseFloat(prev),b=parseFloat(curr);
+  if(isNaN(a)||isNaN(b))return;
+  curr={'+':a+b,'-':a-b,'*':a*b,'/':a/b}[op].toPrecision(10);
+  op='';prev='';show();
+}
+function sci(o){
+  let x=parseFloat(curr);
+  if(isNaN(x)&&o!=='pi')return;
+  let r={sin:Math.sin(x*Math.PI/180),cos:Math.cos(x*Math.PI/180),tan:Math.tan(x*Math.PI/180),
+         sqrt:Math.sqrt(x),pow:x*x,pi:Math.PI}[o];
+  curr=r.toPrecision(10);show();
+}
+document.querySelectorAll('.number').forEach(b=>b.onclick=()=>append(b.innerText));
+document.querySelectorAll('[data-op]').forEach(b=>b.onclick=()=>{
+  let o=b.dataset.op;
+  ['sin','cos','tan','sqrt','pow','pi'].includes(o)?sci(o):(prev=curr,op=o,curr='');
+});
+eq.onclick=calc;ac.onclick=clear;del.onclick=del;show();
+</script>
+</body>
+</html>
